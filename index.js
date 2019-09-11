@@ -1,4 +1,4 @@
-const peerFactoryAddress = '0xF6630B3f3180aD87f238044ead4A591FA9Bd631E';
+const peerFactoryAddress = '0xC0dd4fD0a54d9252e03CA829b512AFF3d0B4DD83';
 const swapContractAddress = '0x6f337bA064b0a92538a4AfdCF0e60F50eEAe0D5B';
 
 const peerFactoryAbi = [{"constant":true,"inputs":[{"name":"_locator","type":"bytes32"}],"name":"has","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_swapContract","type":"address"},{"name":"_peerContractOwner","type":"address"}],"name":"createPeer","outputs":[{"name":"peerContractAddress","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"peerContract","type":"address"},{"indexed":false,"name":"swapContract","type":"address"},{"indexed":true,"name":"peerContractOwner","type":"address"}],"name":"CreatePeer","type":"event"}];

@@ -91,6 +91,13 @@ async function afterLoad() {
   }, (error, event) => {
     if (event) {
       var peerContractAddress = event.returnValues.peerContract;
+
+      if(event.returnValues.peerContractOwner == userAccount){
+        $("#launchToken").hide();
+        $("#showIfAlreadyDeploy").text("Your contract is deployed successfully.");
+
+      }
+
       console.log(peerContractAddress);
       setPeerAddress(peerContractAddress)
     } else {

@@ -86,7 +86,7 @@ async function afterLoad() {
   function setPeerAddress(_result) {
 
 
-    peerContractAddress1 = "0xC0dd4fD0a54d9252e03CA829b512AFF3d0B4DD83";
+    peerContractAddress1 = "0x4fcbaa329fa4833de4eb70b85ebe9023d234fc68";
     // console.log(peerContractAddress);
 
     // Create instance of Peer contract
@@ -264,11 +264,11 @@ $('#getTakerTokens').click(async function() {
 $('#signOrder').click(async function() {
 
   console.log(userAccount);
-
-var makerTokensign = $('#makerTokenAddress').vale();
-console.log(makerTokensign);
-var takerTokensign = $('#takerTokenAddress').vale();
-console.log(takerTokensign);
+// 
+// var makerTokensign = $('#makerTokenAddress').vale();
+// console.log(makerTokensign);
+// var takerTokensign = $('#takerTokenAddress').vale();
+// console.log(takerTokensign);
 
   const takerWallet = "0x0000000000000000000000000000000000000000";
   const makerWallet = userAccount;

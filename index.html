@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style type="text/css" media="screen">
+
+  #loader {
+      width: 100px;
+      display:none;
+  }
+
+  .alert{
+    margin-bottom: 0rem  !important;
+  }
+
+</style>
+  <title>Hello, world!</title>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm bg-info navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="Logo-dark.png" alt="Logo" style="width:200px;">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/swap.html">Swap Token</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link 3</a>
+        </li>
+      </ul>
+      <!-- <span class="navbar-text" id="status">
+        Web3 Status
+      </span> -->
+    </div>
+  </nav>
+
+  <!-- MetaMask allert -->
+  <div class="alert alert-success" role="alert">
+    <span id="status">
+      <p>Please Enable MetaMask and connect Rinkeby Test Network.</p>
+    </span>
+    <span id="userAccount"></span>
+    <span id="peerContractAddress"></span>
+  </div>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-3">Launch your ERC-20 Token on Digital Robotz DEX.</h1>
+      <p class="lead">Creating ERC-20 tokens is one thing and launching and distributing them is another. we made this step easy with AirSwap Onchain Peer Protocol.</p>
+      <button id="launchToken" type="button" name="button">Launch Token</button>
+    </div>
+  </div>
+
+
+
+  <!-- <hr> -->
+  <div class="container">
+
+    <div>
+
+      <p id="txStatus"></p>
+
+      <img id="loader" src="https://loading.io/spinners/double-ring/lg.double-ring-spinner.gif">
+
+    </div>
+
+<hr>
+  <!-- Setting Rules in contract -->
+  <div class="container">
+    <h2>Set trading rules.</h2>
+    <div class="row">
+      <div class="col">
+
+        <p>
+          <strong>
+            Token you want to sell.
+          </strong>
+        </p>
+
+        <label class="">Address</label><br>
+        <input id="makerTokenAddress" class="" font-size="14" spellcheck="false" type="text" placeholder="Token address" value="">
+        <span id="makerTokenName"></span>
+        <br>
+        <label class="">No of tokens.</label><br>
+        <input id="makerTokens" class="" font-size="14" tabindex="-1" type="number" placeholder="0.00" value="">
+        <span id="makerTokenSymbol1"></span>
+
+      </div>
+
+      <div class="col">
+        <p>
+          <strong>
+            Token you want to buy.
+          </strong>
+        </p>
+
+        <label class="">Address</label><br>
+        <input id="takerTokenAddress" class="" font-size="14" spellcheck="false" type="text" placeholder="Token address" value="">
+        <span id="takerTokenName"></span>
+        <br>
+        <label class="">No of tokens.</label><br>
+        <input id="takerTokens" class="" font-size="14" tabindex="-1" type="number" placeholder="0.00" value="">
+        <span id="takerTokenSymbol1"></span>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <br>
+        <p class="">
+          <span>1</span>
+          <span id="makerTokenSymbol2">AST</span>
+          <span>=</span>
+          <span>
+            <input id="makerToken1" class="" font-size="16" type="number" placeholder="0.00" value="" style="width: 100px;">
+            <span id="takerTokenSymbol2">WETH</span>
+          </span>
+        </p>
+
+      </div>
+
+      <div class="col">
+        <br>
+        <button type="button" name="button" id="calculation">Validate</button>
+        <button type="button" id="set" name="button1">Set Rules</button>
+      </div>
+    </div>
+
+    </div>
+
+  <hr>
+
+  <!-- Values of Peer contract => rules -->
+  <div class="container">
+    <h2>Tokens active for trade.</h2>
+    <br>
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>Token you want to sell</th>
+                <th>No. of tokens</th>
+                <th>Token you want to buy</th>
+                <th>No. of tokens</th>
+              </tr>
+            </thead>
+            <tbody id="test">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+<!-- Unset Rules -->
+<div class="container">
+  <h2>Remove trading rules.</h2>
+  <div class="row">
+    <div class="col">
+
+      <p>
+        <strong>
+          Token you want to sell.
+        </strong>
+      </p>
+
+      <label class="">Address</label>
+      <input id="tokenSell" class="" font-size="14" spellcheck="false" type="text" placeholder="Token address" value="">
+      <span id=""></span>
+      <!-- <br>
+      <label class="">No of tokens.</label><br>
+      <input id="makerTokens" class="" font-size="14" tabindex="-1" type="number" placeholder="0.00" value="">
+      <span id="makerTokenSymbol1"></span> -->
+
+    </div>
+
+    <div class="col">
+      <p>
+        <strong>
+          Token you want to buy.
+        </strong>
+      </p>
+
+      <label class="">Address</label>
+      <input id="tokenbuy" class="" font-size="14" spellcheck="false" type="text" placeholder="Token address" value="">
+      <span id=""></span>
+      <!-- <br>
+      <label class="">No of tokens.</label><br>
+      <input id="takerTokens" class="" font-size="14" tabindex="-1" type="number" placeholder="0.00" value="">
+      <span id="takerTokenSymbol1"></span> -->
+    </div>
+
+  </div>
+
+  <div class="row">
+    <!-- <div class="col">
+      <br>
+      <p class="">
+        <span>1</span>
+        <span id="makerTokenSymbol2">AST</span>
+        <span>=</span>
+        <span>
+          <input id="makerToken1" class="" font-size="16" type="number" placeholder="0.00" value="" style="width: 100px;">
+          <span id="takerTokenSymbol2">WETH</span>
+        </span>
+      </p>
+
+    </div> -->
+
+    <div class="col">
+      <br>
+      <!-- <button type="button" name="button" id="calculation">Validate</button> -->
+      <button type="button" id="unset" name="button1">Unset Rules</button>
+    </div>
+  </div>
+
+  </div>
+
+<hr>
+
+<!-- Misc -->
+  <!-- <div class="container">
+    <div class=" container model">
+      <button type="button" id="makerQuote" name="button3">Buy</button>
+      <button type="button" id="takerQuote" name="button4">Sell</button>
+      <button type="button" id="maxQuote" name="button5">Maximum Quotation</button>
+      <button type="button" id="signOrder" name="button5">Sign Order</button>
+      <button type="button" id="orderDone" name="button5">Swap Order</button>
+    </div>
+  </div> -->
+
+  <hr>
+
+
+  <!-- Optional JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.2.0/dist/web3.min.js"></script>
+  <script src="dist/bundle.js"></script>
+  <script src="index.js"></script>
+  <!-- <script src="index1.js"></script> -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

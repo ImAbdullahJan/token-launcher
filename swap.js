@@ -86,11 +86,11 @@ async function afterLoad() {
   function setPeerAddress(_result) {
 
 
-    peerContractAddress = "0xC0dd4fD0a54d9252e03CA829b512AFF3d0B4DD83";
+    peerContractAddress1 = "0xC0dd4fD0a54d9252e03CA829b512AFF3d0B4DD83";
     // console.log(peerContractAddress);
 
     // Create instance of Peer contract
-    var peerContract = new web3.eth.Contract(peerContractAbi, peerContractAddress);
+    var peerContract = new web3.eth.Contract(peerContractAbi, peerContractAddress1);
     // console.log(peerContract);
 
 // listen Set Rules event
@@ -274,9 +274,12 @@ console.log(takerTokensign);
   const makerWallet = userAccount;
   const emptyWallet = "0x0000000000000000000000000000000000000000";
 
-  var makerParam1 = $('#makerTokens').vale();
+  // var makerParam1 = $('#makerTokens').vale();
 
+  const ASTAddress = '0xcc1cbd4f67cceb7c001bd4adf98451237a193ff8';
+  const WETHAddress = '0xc778417e063141139fce010982780140aa0cd5ab';
 
+  var makerParam1 = "1";
   var takerParam1 = "1";
 
   var contractExpiry = "1979783600000";
@@ -323,7 +326,7 @@ Party: [
 
   },
   primaryType: 'Order',
-  domain: {name: 'Swap', version: '2', verifyingContract: swapContractAddress },
+  domain: {name: 'SWAP', version: '2', verifyingContract: swapContractAddress },
   message: order
 });
 
